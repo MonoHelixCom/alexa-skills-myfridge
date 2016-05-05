@@ -1,0 +1,16 @@
+{
+  "intents": [
+    {
+      "intent": "GetStatus"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}

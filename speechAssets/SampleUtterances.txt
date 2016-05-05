@@ -1,0 +1,17 @@
+GetStatus what is the status
+GetStatus what's the status
+GetStatus what is the temperature
+GetStatus what's the temperature
+GetStatus what is the humidity
+GetStatus what's the humidity
+GetStatus how is
+GetStatus how's
+
+AMAZON.HelpIntent help
+AMAZON.HelpIntent help me
+AMAZON.HelpIntent what can I ask
+AMAZON.HelpIntent get help
+AMAZON.HelpIntent what questions can I ask
+AMAZON.HelpIntent what commands can I ask
+AMAZON.HelpIntent what commands can I say
+AMAZON.HelpIntent what can I do
