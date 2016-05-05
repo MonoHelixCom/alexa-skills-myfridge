@@ -101,11 +101,18 @@ function handleFridgeStatusRequest(intent, session, response) {
     var speechText = "Your fridge says ";
 
     getJsonDataFromMyFridge(function (data) {
+
+        var temp = data.status.temperature
+        var humidity = data.status.humidity
+        var cardTitle = "My Fridge"
+        var cardContent = "Temperature: " + temp + "ºC\nHumidity: " + humidity + "%"
+
         var speechOutput = {
-            speech: speechText + "the temperature inside is " + data.status.temperature + " degrees, humidity of " + data.status.humidity + " percent." ,
+            speech: speechText + "the temperature inside is " + temp + " degrees, humidity of " + humidity + " percent." ,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
         };
-        response.tell(speechOutput);
+
+        response.tellWithCard(speechOutput, cardTitle, cardContent);
     });
 }
 
