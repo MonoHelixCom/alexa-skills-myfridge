@@ -1,11 +1,11 @@
 /**
-    Copyright 2016 MonoHelix.com
+    Copyright 2016-2017 MonoHelixLabs.com
     Author: Paula Petcu    
 */
 
 /**
  * This skill shows how to create a Lambda function for handling Alexa Skill requests that communicates with 
- * a REST API providing information about the temperature and humidity inside a fridge.
+ * a REST API providing information about the fridge.
  *
  * Examples:
  * User:  "Alexa, what's the temperature in My Fridge."
@@ -28,7 +28,7 @@ var AlexaSkill = require('./AlexaSkill');
 /**
  * URL to communicate with the fridge
  */
-var fridgeUrlApi = 'http://fridge.monohelix.com/api/status'
+var fridgeUrlApi = 'http://fridge-api-dev'+'.eu-central-1.elasticbeanstalk.com'+'/status'
 
 /**
  * MyFridgeSkill is a child of AlexaSkill.
@@ -103,12 +103,11 @@ function handleFridgeStatusRequest(intent, session, response) {
     getJsonDataFromMyFridge(function (data) {
 
         var temp = data.status.temperature
-        var humidity = data.status.humidity
         var cardTitle = "My Fridge"
-        var cardContent = "Temperature: " + temp + "ºC\nHumidity: " + humidity + "%"
+        var cardContent = "Temperature: " + temp + "ºC"
 
         var speechOutput = {
-            speech: speechText + "the temperature inside is " + temp + " degrees, humidity of " + humidity + " percent." ,
+            speech: speechText + "the temperature inside is " + temp + " degrees" ,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
         };
 

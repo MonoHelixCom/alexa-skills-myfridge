@@ -1,7 +1,7 @@
-#My Fridge Skill for Alexa
+# My Fridge Skill for Alexa
 
 ## About
-This skill shows how to create a Lambda function for handling Alexa Skill requests that communicates with a REST API providing information about the temperature and humidity inside a fridge.
+This skill shows how to create a Lambda function for handling Alexa Skill requests that communicates with a REST API providing information about the temperature inside a fridge.
 
 ## Setup
 To run this skill you need to do two things. The first is to deploy the example code in Lambda, and the second is to configure the Alexa skill to use Lambda.
@@ -38,7 +38,7 @@ To run this skill you need to do two things. The first is to deploy the example 
 Example user interactions:
 
   User:  "Alexa, what's the temperature in My Fridge."
-  Alexa: "Your fridge says the temperature inside is 5.2 degrees, humidity of 30.5 percent"
+  Alexa: "Your fridge says the temperature inside is 5.2 degrees."
 
 ## References
 Some of the code and documentation is based on: https://github.com/amzn/alexa-skills-kit-js

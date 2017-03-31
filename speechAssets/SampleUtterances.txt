@@ -2,8 +2,6 @@ GetStatus what is the status
 GetStatus what's the status
 GetStatus what is the temperature
 GetStatus what's the temperature
-GetStatus what is the humidity
-GetStatus what's the humidity
 GetStatus how is
 GetStatus how's
 
