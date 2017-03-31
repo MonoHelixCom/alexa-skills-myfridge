@@ -4,6 +4,9 @@
       "intent": "GetStatus"
     },
     {
+      "intent": "GetMilkStatus"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     },
     {

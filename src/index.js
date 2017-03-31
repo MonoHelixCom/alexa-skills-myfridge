@@ -28,7 +28,8 @@ var AlexaSkill = require('./AlexaSkill');
 /**
  * URL to communicate with the fridge
  */
-var fridgeUrlApi = 'http://fridge-api-dev'+'.eu-central-1.elasticbeanstalk.com'+'/status'
+var fridgeStatusUrlApi = 'http://fridge-api-dev'+'.eu-central-1.elasticbeanstalk.com'+'/status'
+var fridgeMilkStatusUrlApi = 'http://fridge-api-dev'+'.eu-central-1.elasticbeanstalk.com'+'/milkstatus'
 
 /**
  * MyFridgeSkill is a child of AlexaSkill.
@@ -70,6 +71,10 @@ MyFridgeSkill.prototype.intentHandlers = {
         handleFridgeStatusRequest(intent, session, response);
     },
 
+    "GetMilkStatus": function (intent, session, response) {
+        handleMilkStatusRequest(intent, session, response);
+    },
+
     "AMAZON.HelpIntent": function (intent, session, response) {
         var speechText = "With My Fridge, you can get the status of your fridge.  " +
             "For example, you could say what's the temperature in my fridge, or, how is my fridge?";
@@ -100,14 +105,14 @@ MyFridgeSkill.prototype.intentHandlers = {
 function handleFridgeStatusRequest(intent, session, response) {
     var speechText = "Your fridge says ";
 
-    getJsonDataFromMyFridge(function (data) {
+    getJsonDataFromMyFridge(fridgeStatusUrlApi, function (data) {
 
         var temp = data.status.temperature
-        var cardTitle = "My Fridge"
+        var cardTitle = "Fridge Status"
         var cardContent = "Temperature: " + temp + "ºC"
 
         var speechOutput = {
-            speech: speechText + "the temperature inside is " + temp + " degrees" ,
+            speech: speechText + "the temperature inside is " + temp + " degrees." ,
             type: AlexaSkill.speechOutputType.PLAIN_TEXT
         };
 
@@ -115,8 +120,26 @@ function handleFridgeStatusRequest(intent, session, response) {
     });
 }
 
-function getJsonDataFromMyFridge(eventCallback) {
-    var url = fridgeUrlApi;
+function handleMilkStatusRequest(intent, session, response) {
+    var speechText = "Your fridge says ";
+
+    getJsonDataFromMyFridge(fridgeMilkStatusUrlApi, function (data) {
+
+        var liters = data.status.liters
+        var cardTitle = "Milk Status"
+        var cardContent = "Milk: " + liters + "L"
+
+        var speechOutput = {
+            speech: speechText + "there is " + liters + " liters of milk." ,
+            type: AlexaSkill.speechOutputType.PLAIN_TEXT
+        };
+
+        response.tellWithCard(speechOutput, cardTitle, cardContent);
+    });
+}
+
+function getJsonDataFromMyFridge(url, eventCallback) {
+    //var url = fridgeUrlApi;
 
     console.log(url);
 

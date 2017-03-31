@@ -5,6 +5,10 @@ GetStatus what's the temperature
 GetStatus how is
 GetStatus how's
 
+GetMilkStatus how much milk left
+GetMilkStatus do I have milk
+GetMilkStatus any milk left
+
 AMAZON.HelpIntent help
 AMAZON.HelpIntent help me
 AMAZON.HelpIntent what can I ask
